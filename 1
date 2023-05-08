@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Journaling Prompts Card Game</title>
+    <style>
+        /* Add your custom CSS styles here */
+        .card {
+            width: 300px;
+            height: 200px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .response-input {
+            width: 80%;
+            height: 30px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .prompt-button {
+            width: 150px;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="question">How was your day?</div>
+        <input type="text" id="response-input" class="response-input" placeholder="Enter your response">
+        <button id="prompt-button" class="prompt-button">Generate Journaling Prompts</button>
+    </div>
+
+    <script>
+        // Add your custom JavaScript code here
+        const responseInput = document.getElementById('response-input');
+        const promptButton = document.getElementById('prompt-button');
+        promptButton.addEventListener('click', generatePrompts);
+
+        function generatePrompts() {
+            const response = responseInput.value.trim();
+
+            // You can define your own logic here to generate prompts based on the response
+
+            // Example prompts based on the user's response
+            let prompts = [];
+            if (response.includes('good')) {
+                prompts = [
+                    "What made your day good?",
+                    "What were the highlights of your day?",
+                    "How did you feel during the best moments of your day?",
+                ];
+            } else if (response.includes('bad')) {
+                prompts = [
+                    "What made your day challenging?",
+                    "How did you handle the difficult situations?",
+                    "What lessons did you learn from the tough moments?",
+                ];
+            } else {
+                prompts = [
+                    "Describe your day in a few words.",
+                    "What stood out to you today?",
+                    "What are you grateful for today?",
+                ];
+            }
+
+            // Display the prompts
+            displayPrompts(prompts);
+        }
+
+        function displayPrompts(prompts) {
+            const card = document.querySelector('.card');
+            card.innerHTML = '';
+            prompts.forEach(prompt => {
+                const promptElement = document.createElement('div');
+                promptElement.innerText = prompt;
+                card.appendChild(promptElement);
+            });
+        }
+    </script>
+</body>
+</html>
